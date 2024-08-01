@@ -1,0 +1,14 @@
+[Unit]
+Description=V2ray server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/v2ray -config /etc/v2ray/config.json
+Restart=on-failure
+User=root
+Group=root
+LimitNOFILE=4096
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
