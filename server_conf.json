@@ -105,6 +105,28 @@
                   }
         }
       }
+    },
+	{
+      "port": 446,
+      "listen": "0.0.0.0",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "<change-user-uuid>",
+            "alterId": 4
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "quic",
+        "quicSettings": {
+		  "security": "none",
+		  "key": "",
+		  "header": {
+			"type": "srtp"
+		  }
+      }
     }
   ],
   "outbounds": [
