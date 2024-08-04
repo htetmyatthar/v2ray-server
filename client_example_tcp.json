@@ -1,139 +1,140 @@
 {
-  "log": {
-    "loglevel": "info",
-    "access": "",
-    "error": ""
-  },
-  "inbounds": [
-    {
-      "port": 1080,
-      "listen": "127.0.0.1",
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": false,
-        "ip": "127.0.0.1"
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vmess",
-      "settings": {
-        "vnext": [
-          {
-            "address": "<domain (or) ip-address>",  // Replace with your server's IP address or domain name
-            "port": 443,
-            "users": [
-              {
-                "id": "<change-user-uuid>",  // Replace with the same UUID as in your server config
-                "alterId": 1,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "none",
-        "tcpSettings": {
-          "header": {
-            "type": "http",
-            "request": {
-              "version": "1.1",
-              "method": "GET",
-              "path": [
-                "/"
-              ],
-              "headers": {
-                "Host": [
-                  "www.bing.com"
-                ],
-                "User-Agent": [
-                  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36",
-                  "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/53.0.2785.109 Mobile/14A456 Safari/601.1.46"
-                ],
-                "Accept-Encoding": [
-                  "gzip, deflate"
-                ],
-                "Connection": [
-                  "keep-alive"
-                ],
-                "Pragma": "no-cache"
-              }
-            },
-            "response": {
-              "version": "1.1",
-              "status": "200",
-              "reason": "OK",
-              "headers": {
-                "Content-Type": [
-                  "application/octet-stream",
-                  "video/mpeg"
-                ],
-                "Transfer-Encoding": [
-                  "chunked"
-                ],
-                "Connection": [
-                  "keep-alive"
-                ],
-                "Pragma": "no-cache"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "protocol": "freedom",
-      "settings": {},
-      "tag": "direct"
-    }
-  ],
-  "dns": {
-    "servers": [
-      "8.8.8.8",
-      "8.8.4.4"
-    ]
-  },
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "100.64.0.0/10",
-          "127.0.0.0/8",
-          "169.254.0.0/16",
-          "172.16.0.0/12",
-          "192.0.0.0/24",
-          "192.0.2.0/24",
-          "192.168.0.0/16",
-          "198.18.0.0/15",
-          "198.51.100.0/24",
-          "203.0.113.0/24",
-                  // these are the youtube's IP addresses
-		  "199.223.232.0/21",
-          "207.223.160.0/20",
-          "208.65.152.0/22",
-          "208.117.224.0/19",
-          "209.85.128.0/17",
-          "216.58.192.0/19",
-          "216.239.32.0/19",
-                  // end of youtube's IP addresses,
-          "::1/128",
-          "fc00::/7",
-          "fe80::/10"
-        ],
-        "outboundTag": "direct"
-      }
-    ]
-  }
+	"log": {
+		"loglevel": "info",
+		"access": "",
+		"error": ""
+	},
+	"inbounds": [
+		{
+			"port": 1080,
+			"listen": "127.0.0.1",
+			"protocol": "socks",
+			"settings": {
+				"auth": "noauth",
+				"udp": false,
+				"ip": "127.0.0.1"
+			},
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				]
+			}
+		}
+	],
+	"outbounds": [
+		{
+			"protocol": "vmess",
+			"settings": {
+				"vnext": [
+					{
+						"address": "<domain (or) ip-address>",
+						"port": 443,
+						"users": [
+							{
+								"id": "<change-user-uuid>",
+								"alterId": 1,
+								"security": "auto"
+							}
+						]
+					}
+				]
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"security": "none",
+				"tcpSettings": {
+					"header": {
+						"type": "http",
+						"request": {
+							"version": "1.1",
+							"method": "GET",
+							"path": [
+								"/"
+							],
+							"headers": {
+								"Host": [
+									"www.bing.com"
+								],
+								"User-Agent": [
+									"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36",
+									"Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/53.0.2785.109 Mobile/14A456 Safari/601.1.46"
+								],
+								"Accept-Encoding": [
+									"gzip, deflate"
+								],
+								"Connection": [
+									"keep-alive"
+								],
+								"Pragma": "no-cache"
+							}
+						},
+						"response": {
+							"version": "1.1",
+							"status": "200",
+							"reason": "OK",
+							"headers": {
+								"Content-Type": [
+									"application/octet-stream",
+									"video/mpeg"
+								],
+								"Transfer-Encoding": [
+									"chunked"
+								],
+								"Connection": [
+									"keep-alive"
+								],
+								"Pragma": "no-cache"
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"protocol": "freedom",
+			"settings": {},
+			"tag": "direct"
+		}
+	],
+	"dns": {
+		"servers": [
+			"8.8.8.8",
+			"8.8.4.4"
+		]
+	},
+	"routing": {
+		"domainStrategy": "IPIfNonMatch",
+		"rules": [
+			{
+				"type": "field",
+				"ip": [
+					"0.0.0.0/8",
+					"10.0.0.0/8",
+					"100.64.0.0/10",
+					"127.0.0.0/8",
+					"169.254.0.0/16",
+					"172.16.0.0/12",
+					"192.0.0.0/24",
+					"192.0.2.0/24",
+					"192.168.0.0/16",
+					"198.18.0.0/15",
+					"198.51.100.0/24",
+					"203.0.113.0/24",
+					"::1/128",
+					"fc00::/7",
+					"fe80::/10",
+					"199.223.232.0/21",
+					"207.223.160.0/20",
+					"208.65.152.0/22",
+					"208.117.224.0/19",
+					"209.85.128.0/17",
+					"216.58.192.0/19",
+					"216.239.32.0/19"
+				],
+				"outboundTag": "direct"
+			}
+		]
+	}
 }
