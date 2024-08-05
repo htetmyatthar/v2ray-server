@@ -90,7 +90,8 @@
 						}
 					}
 				}
-			}
+			},
+			"mux": {"enabled" : true}
 		},
 		{
 			"protocol": "freedom",
